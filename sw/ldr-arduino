@@ -1,0 +1,60 @@
+#include <LiquidCrystal.h>// Importando a biblioteca do Display
+//----------------------------------------------
+ 
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2); //Inicializando as portas de dados do display 
+ 
+ 
+int valConv = 0; //Variavel usada para ler o valor que é convertido pela função analogRead
+ 
+//Setup(Executado apenas uma vez)  
+void setup(){
+  
+}
+ 
+//Laço principal (Executado Infinitamente)
+void loop(){
+  
+  valConv = analogRead(0);// Le o valor do sensor no pino A0
+   
+ //Condição para luminosidade Baixa
+  if (valConv < 600) {
+   
+ lcd.begin(20, 4);
+ lcd.setCursor(4,0);
+ lcd.print("Sensor LDR");
+ lcd.setCursor(1, 1);
+ lcd.print("Luminosidade Baixa ");
+ lcd.setCursor(12,1);
+ lcd.setCursor(3,3);
+ lcd.print("fazedores.com");
+  }
+  
+  //Condição para luminosidade Média
+  if (valConv >= 600 && valConv <= 700) {
+   
+ lcd.begin(20, 4);
+ lcd.setCursor(4,0);
+ lcd.print("Sensor LDR");
+ lcd.setCursor(1,1);
+ lcd.print("Luminosidade Media ");  
+ lcd.setCursor(12,1);
+ lcd.setCursor(3,3);
+ lcd.print("fazedores.com");
+  }
+  
+  //Condição para luminosidade Alta
+  if (valConv > 700) {
+ lcd.begin(20, 4);
+ lcd.setCursor(4,0);
+ lcd.print("Sensor LDR");
+ lcd.setCursor(1,1);
+ lcd.print("Luminosidade Alta ");
+ lcd.setCursor(12,1);
+ lcd.setCursor(3,3);
+ lcd.print("fazedores.com");
+  }
+  delay(1000);//Espera 1 segundo para executar o laço novamente
+  
+  
+}
+
