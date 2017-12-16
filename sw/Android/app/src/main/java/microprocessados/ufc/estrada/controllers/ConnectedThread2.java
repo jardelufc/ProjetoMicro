@@ -11,7 +11,7 @@ import java.io.OutputStream;
 import java.util.Arrays;
 
 
-public class ConnectedThread extends Thread {
+public class ConnectedThread2 extends Thread {
     private final BluetoothSocket mmSocket;
     private final InputStream mmInStream;
     private final OutputStream mmOutStream;
@@ -19,9 +19,9 @@ public class ConnectedThread extends Thread {
 
     private static final String CONTROL_CHAR = "#";
 
-    private static final String INIT_CONTROL_CHAR = "&";
+    private static final String INIT_CONTROL_CHAR = "$";
 
-    public ConnectedThread(BluetoothSocket socket,Handler receiveHandler) {
+    public ConnectedThread2(BluetoothSocket socket, Handler receiveHandler) {
         mmSocket = socket;
         InputStream tmpIn = null;
         OutputStream tmpOut = null;
@@ -62,11 +62,13 @@ public class ConnectedThread extends Thread {
                             message.obj = buffer2;
                             message.what = 2;
                             receiveHandler.sendMessage(message);
+                            is_reading = false;
 //                        receiveHandler.obtainMessage(1, begin, i, buffer).sendToTarget();
                             begin = i + 1;
                             if (i == bytes - 1) {
                                 bytes = 0;
                                 begin = 0;
+
                             }
                         }
                     }

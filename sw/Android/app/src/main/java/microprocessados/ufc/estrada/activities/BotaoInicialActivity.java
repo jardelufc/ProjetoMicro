@@ -26,7 +26,7 @@ public class BotaoInicialActivity extends AppCompatActivity {
         botao1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),TrafegoActivity.class);
+                Intent intent = new Intent(getApplicationContext(),MainScreenCongestionado2Activity.class);
                 intent.putExtra("Device",device);
                 startActivity(intent);
             }
@@ -35,7 +35,7 @@ public class BotaoInicialActivity extends AppCompatActivity {
         botao2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),StatusPosteActivity.class);
+                Intent intent = new Intent(getApplicationContext(),MainScreenPoste2Activity.class);
                 intent.putExtra("Device",device);
                 startActivity(intent);
             }

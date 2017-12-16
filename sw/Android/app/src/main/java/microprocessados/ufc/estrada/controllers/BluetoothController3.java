@@ -9,15 +9,14 @@ import java.util.ArrayList;
 import java.util.Set;
 
 
+public class BluetoothController3 {
 
-public class BluetoothController {
-
-    private ConnectThread mConnectThread;
+    private ConnectThread3 mConnectThread;
     private BluetoothDevice mDevice;
     private BluetoothAdapter mBluetoothAdapter;
     private Handler connectHandler;
 
-    public BluetoothController(Handler connectHandler) throws NoBluetoothFoundException, BluetoothDisabledException {
+    public BluetoothController3(Handler connectHandler) throws NoBluetoothFoundException, BluetoothDisabledException {
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if(mBluetoothAdapter == null)
             throw new NoBluetoothFoundException();
@@ -38,7 +37,7 @@ public class BluetoothController {
     }
 
     public void connect(BluetoothDevice mdevice){
-        mConnectThread = new ConnectThread(mDevice,mBluetoothAdapter,connectHandler);
+        mConnectThread = new ConnectThread3(mDevice,mBluetoothAdapter,connectHandler);
         mConnectThread.start();
     }
 

@@ -15,13 +15,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import microprocessados.ufc.estrada.R;
-import microprocessados.ufc.estrada.controllers.BluetoothController;
+import microprocessados.ufc.estrada.controllers.BluetoothController2;
 import microprocessados.ufc.estrada.controllers.FlowController;
 
-public class MainScreenActivity extends AppCompatActivity {
+public class MainScreenPoste2Activity extends AppCompatActivity {
 
     private FlowController flowController;
-    private BluetoothController bluetoothController;
+    private BluetoothController2 bluetoothController;
     private FrameLayout card;
     private Handler connectHandler;
     private BluetoothDevice device;
@@ -31,7 +31,7 @@ public class MainScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_screen_poste2);
 //        flowController = new FlowController();
 
 
@@ -43,11 +43,11 @@ public class MainScreenActivity extends AppCompatActivity {
 //        card.setBackgroundColor(Color.parseColor("red"));
         try {
             setHandler();
-            bluetoothController = new BluetoothController(connectHandler);
+            bluetoothController = new BluetoothController2(connectHandler);
             bluetoothController.connect(device);
-        }catch (BluetoothController.NoBluetoothFoundException e1){
+        }catch (BluetoothController2.NoBluetoothFoundException e1){
             Toast.makeText(this,"O dispositivo não possui Bluetooth.",Toast.LENGTH_SHORT).show();
-        }catch (BluetoothController.BluetoothDisabledException e2){
+        }catch (BluetoothController2.BluetoothDisabledException e2){
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableBtIntent, 1);
         }
@@ -123,3 +123,4 @@ public class MainScreenActivity extends AppCompatActivity {
         bluetoothController.disconnect();
     }
 }
+

@@ -32,7 +32,7 @@ public class PairedDevicesActivity extends AppCompatActivity {
         try {
             devicesList = (ListView) findViewById(R.id.devicesLists);
             if(bluetoothController==null)
-                bluetoothController = new BluetoothController(connectHandler,"#");
+                bluetoothController = new BluetoothController(connectHandler);
             final CustomAdapter adapter = new CustomAdapter(this, android.R.layout.simple_list_item_1, bluetoothController.getPairedDevices());
             devicesList.setAdapter(adapter);
             devicesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -44,7 +44,7 @@ public class PairedDevicesActivity extends AppCompatActivity {
                 }
             });
         }catch (BluetoothController.NoBluetoothFoundException e1){
-            Toast.makeText(this,"O dispositivo não possui Bluetooth.",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"O dispositivo não possui Bluetooth. Seu Pobre!",Toast.LENGTH_SHORT).show();
         }catch (BluetoothController.BluetoothDisabledException e2){
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableBtIntent, 1);
@@ -73,6 +73,7 @@ public class PairedDevicesActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        bluetoothController.disconnect();
     }
 
 }

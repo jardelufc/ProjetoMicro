@@ -8,7 +8,7 @@ import android.os.Handler;
 import java.io.IOException;
 import java.util.UUID;
 
-public class ConnectThread extends Thread {
+public class ConnectThread3 extends Thread {
     private final BluetoothSocket mmSocket;
     private final BluetoothDevice mmDevice;
     private final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805f9b34fb");
@@ -16,7 +16,7 @@ public class ConnectThread extends Thread {
     private ConnectedThread mConnectedThread;
     private Handler connectionHandler;
 
-    public ConnectThread(BluetoothDevice device,BluetoothAdapter mBluetoothAdapter, Handler connectionHandler) {
+    public ConnectThread3(BluetoothDevice device, BluetoothAdapter mBluetoothAdapter, Handler connectionHandler) {
         BluetoothSocket tmp = null;
         mmDevice = device;
         try {

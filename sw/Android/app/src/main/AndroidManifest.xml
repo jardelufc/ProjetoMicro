@@ -18,6 +18,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.MainScreenActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.PairedDevicesActivity"
@@ -28,10 +29,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.PosteActivity" />
         <activity android:name=".activities.BotaoInicialActivity" />
-        <activity android:name=".activities.TrafegoActivity" />
-        <activity android:name=".activities.StatusPosteActivity"></activity>
+        <activity android:name=".activities.MainScreenCongestionado2Activity" />
+        <activity android:name=".activities.MainScreenPoste2Activity"></activity>
     </application>
 
 </manifest>

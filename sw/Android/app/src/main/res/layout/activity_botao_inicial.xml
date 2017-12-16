@@ -13,31 +13,31 @@
         android:orientation="vertical"
         android:gravity="center">
 
-    <Button
-        android:id="@+id/botao1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Status do trafego"
-        android:textColor="@color/colorPrimary"
-        tools:layout_editor_absoluteX="110dp"
-        tools:layout_editor_absoluteY="99dp" />
+        <Button
+            android:id="@+id/botao1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status do trafego"
+            android:textColor="@color/colorPrimary"
+            tools:layout_editor_absoluteX="110dp"
+            tools:layout_editor_absoluteY="99dp" />
 
-    <Button
-        android:id="@+id/botao2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Status dos postes"
-        android:textColor="@color/colorPrimary"
-        tools:layout_editor_absoluteX="110dp"
-        tools:layout_editor_absoluteY="191dp" />
+        <Button
+            android:id="@+id/botao2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status dos postes"
+            android:textColor="@color/colorPrimary"
+            tools:layout_editor_absoluteX="110dp"
+            tools:layout_editor_absoluteY="191dp" />
 
-    <Button
-        android:id="@+id/botao3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Contagem de Carros"
-        android:textColor="@color/colorPrimary"
-        tools:layout_editor_absoluteX="103dp"
-        tools:layout_editor_absoluteY="263dp" />
+        <Button
+            android:id="@+id/botao3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contagem de Carros"
+            android:textColor="@color/colorPrimary"
+            tools:layout_editor_absoluteX="103dp"
+            tools:layout_editor_absoluteY="263dp" />
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>
