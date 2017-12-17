@@ -9,7 +9,7 @@ Instruções para compilar do codigo na bluepill:
  2- Baixe os programas Attolic TrueSTUDIO e STM32CubeMX no seu computador para manipular o codigo. 
  3 - Utilizamos um programador St-link V2 para colocar o codigo na placa. 
 
-Obs: Para alimentar o modulo HC-05 (bluetooth) se pode conectar na porta 5V da buepill, mas para isso a placa deve estar conectada via USB no computador
+Obs: Para alimentar o modulo HC-05 (bluetooth) se pode conectar na porta 5V da bluepill, mas para isso a placa deve estar conectada via USB no computador
 para ter essa tensão completa. 
 
 Instruçes para o Aplicativo Android:
