@@ -4,6 +4,7 @@
 Utilizamos a placa STM32F103, e os programas Attolic TrueSTUDIO e STM32CubeMX. 
 
 Instruções para compilar do codigo na bluepill:
+
 1 - Baixe os arquivos em sw, o arquivo Estrada Inteligente será o codigo da placa.
 2- Baixe os programas Attolic TrueSTUDIO e STM32CubeMX no seu computador para manipular o codigo. 
 3 - Utilizamos um programador St-link V2 para colocar o codigo na placa. 
