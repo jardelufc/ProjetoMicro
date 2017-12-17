@@ -45,32 +45,12 @@
                     android:layout_width="20dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="AQUA"
-                    android:textAlignment="textEnd"
+                    android:gravity="end"
+                    android:text="ESTRADA INTELIGENTE"
+                    android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="30sp"
-                    android:visibility="visible"
-                    android:gravity="end" />
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="1dp"
-                    android:layout_height="80dp"
-                    android:layout_weight="1"
-                    android:visibility="visible"
-                    app:srcCompat="@drawable/logo" />
-
-                <TextView
-                    android:id="@+id/textView14"
-                    android:layout_width="20dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="MAN"
-                    android:textAlignment="textStart"
-                    android:textColor="@android:color/black"
-                    android:textSize="30sp"
-                    android:visibility="visible"
-                    android:gravity="start" />
+                    android:visibility="visible" />
 
             </LinearLayout>
 
@@ -88,7 +68,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="90dp"
-                android:background="#4CAF50"
+                android:background="@color/colorPrimaryDark"
                 android:elevation="2dp"
                 android:visibility="visible">
 
@@ -105,10 +85,11 @@
                         android:layout_above="@+id/infoCard"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
+                        android:layout_marginBottom="14dp"
                         android:fontFamily="sans-serif"
-                        android:text="CONSUMO"
+                        android:text="CONTAGEM DE CARROS"
                         android:textAlignment="center"
-                        android:textSize="24sp"
+                        android:textSize="22sp"
                         android:visibility="visible" />
 
                     <TextView
@@ -120,23 +101,23 @@
                         android:layout_centerVertical="true"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:text="Aqui precisa aparecer as informações sobre o consumo de água diário, mensal ou anual"
+                        android:text="--"
                         android:textAlignment="center"
-                        android:textSize="18sp"
+                        android:textSize="32sp"
                         android:visibility="visible" />
 
                     <TextView
                         android:id="@+id/bottomCard"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
-                        android:layout_marginBottom="12dp"
-                        android:text="Rodapé!"
+                        android:layout_below="@+id/infoCard"
+                        android:layout_marginTop="17dp"
+                        android:text="Litros"
                         android:textAlignment="center"
                         android:textSize="20sp"
-                        android:visibility="visible" />
+                        android:visibility="invisible" />
 
                 </RelativeLayout>
 
