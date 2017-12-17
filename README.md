@@ -12,7 +12,7 @@ Instruções para compilar o codigo na bluepill:
 Obs: Para alimentar o modulo HC-05 (bluetooth) se pode conectar na porta 5V da bluepill, mas para isso a placa deve estar conectada via USB no computador
 para ter essa tensão completa. 
 
-Instruçes para o Aplicativo Android:
+Instruçoes para o Aplicativo Android:
   1 - Acesse a pasta Android e depois APK.
   2 - Baixe o arquivo .apk.
   3 - Instale ele no seu celular android e estará pronto para usar. 
