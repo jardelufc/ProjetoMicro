@@ -10,8 +10,6 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,17 +32,7 @@ public class MainScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        tela1 = (Button)tela1.findViewById(R.id.poste);
-//        tela1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-                //Codigo que chama uma nova tela
-//                Intent intent = new Intent(getApplicationContext(),PosteActivity.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
-//        flowC/ontroller = new FlowController();
+//        flowController = new FlowController();
 
 
 //        flowController.setAquaConsume(10);
@@ -55,10 +43,10 @@ public class MainScreenActivity extends AppCompatActivity {
 //        card.setBackgroundColor(Color.parseColor("red"));
         try {
             setHandler();
-            bluetoothController = new BluetoothController(connectHandler,"");
+            bluetoothController = new BluetoothController(connectHandler);
             bluetoothController.connect(device);
         }catch (BluetoothController.NoBluetoothFoundException e1){
-            Toast.makeText(this,"O dispositivo não possui Bluetooth. Seu Pobre!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"O dispositivo não possui Bluetooth.",Toast.LENGTH_SHORT).show();
         }catch (BluetoothController.BluetoothDisabledException e2){
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableBtIntent, 1);
@@ -121,6 +109,9 @@ public class MainScreenActivity extends AppCompatActivity {
 //                                "RECEBIDO DADO" + msg.obj, Toast.LENGTH_SHORT)
 //                                .show();
                         break;
+                    case 3:
+                        Toast.makeText(getApplicationContext(),"Desconectado com sucesso",Toast.LENGTH_SHORT).show();
+                        break;
                 }
             }
         };
@@ -129,6 +120,6 @@ public class MainScreenActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-//        bluetoothController.closeSocket();
+        bluetoothController.disconnect();
     }
 }

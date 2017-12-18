@@ -7,37 +7,53 @@
     android:background="#F5F5F5"
     android:visibility="visible"
     tools:context="microprocessados.ufc.estrada.activities.BotaoInicialActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="end"
+        android:text="ESTRADA INTELIGENTE"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        android:visibility="visible" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center">
 
-    <Button
-        android:id="@+id/botao1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Status do trafego"
-        android:textColor="@color/colorPrimary"
-        tools:layout_editor_absoluteX="110dp"
-        tools:layout_editor_absoluteY="99dp" />
+        <Button
+            android:id="@+id/botao1"
+            android:layout_width="172dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:text="Status do trafego"
+            android:textColor="@color/colorPrimary"
+            tools:layout_editor_absoluteX="110dp"
+            tools:layout_editor_absoluteY="99dp" />
 
-    <Button
-        android:id="@+id/botao2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Status dos postes"
-        android:textColor="@color/colorPrimary"
-        tools:layout_editor_absoluteX="110dp"
-        tools:layout_editor_absoluteY="191dp" />
+        <Button
+            android:id="@+id/botao3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contagem de Carros"
+            android:textColor="@color/colorPrimary"
+            android:visibility="invisible"
+            tools:layout_editor_absoluteX="103dp"
+            tools:layout_editor_absoluteY="263dp" />
 
-    <Button
-        android:id="@+id/botao3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Contagem de Carros"
-        android:textColor="@color/colorPrimary"
-        tools:layout_editor_absoluteX="103dp"
-        tools:layout_editor_absoluteY="263dp" />
+        <Button
+            android:id="@+id/botao2"
+            android:layout_width="172dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:text="Status dos postes"
+            android:textColor="@color/colorPrimary"
+            tools:layout_editor_absoluteX="110dp"
+            tools:layout_editor_absoluteY="191dp" />
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

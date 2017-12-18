@@ -10,9 +10,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Arrays;
 
-/**
- * Created by Simao on 09/12/2017.
- */
 
 public class ConnectedThread extends Thread {
     private final BluetoothSocket mmSocket;
@@ -20,12 +17,11 @@ public class ConnectedThread extends Thread {
     private final OutputStream mmOutStream;
     private Handler receiveHandler;
 
-    private String CONTROL_CHAR;
+    private static final String CONTROL_CHAR = "#";
 
     private static final String INIT_CONTROL_CHAR = "&";
 
-    public ConnectedThread(BluetoothSocket socket,Handler receiveHandler, String CONTROL_CHAR) {
-        this.CONTROL_CHAR = CONTROL_CHAR;
+    public ConnectedThread(BluetoothSocket socket,Handler receiveHandler) {
         mmSocket = socket;
         InputStream tmpIn = null;
         OutputStream tmpOut = null;
@@ -39,7 +35,7 @@ public class ConnectedThread extends Thread {
     }
     public void run() {
         Log.d("BLUETOOTH","Rodando...");
-        byte[] buffer = new byte[4096];
+        byte[] buffer = new byte[1024];
         int begin = 0;
         int bytes = 0;
         boolean is_reading = false;
@@ -52,14 +48,18 @@ public class ConnectedThread extends Thread {
                 if(buffer[i]==INIT_CONTROL_CHAR.getBytes()[0]) {
                     Log.d("BLUETOOTH","Lendo...");
                     is_reading = true;
-                    buffer = new byte[4096];
+                    buffer = new byte[1024];
+                    begin = i + 1;
+                    if (i == bytes - 1) {
+                        bytes = 0;
+                        begin = 0;
+                    }
                 }
+
                 }
-                if(is_reading == false) {
-                    buffer = new byte[4096];
-                    begin = 0;
-                    bytes = 0;
-                }
+                if(is_reading == false)
+                    buffer = new byte[1024];
+
 
                     for (int i = begin; i < bytes; i++) {
                         if (buffer[i] == CONTROL_CHAR.getBytes()[0]) {
@@ -73,7 +73,7 @@ public class ConnectedThread extends Thread {
                             if (i == bytes - 1) {
                                 bytes = 0;
                                 begin = 0;
-                         }
+                            }
                         }
                     }
 

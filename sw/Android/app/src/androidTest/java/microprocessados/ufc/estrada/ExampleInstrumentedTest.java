@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("microprocessados.ufc.epc", appContext.getPackageName());
+        assertEquals("microprocessados.ufc.estrada", appContext.getPackageName());
     }
 }

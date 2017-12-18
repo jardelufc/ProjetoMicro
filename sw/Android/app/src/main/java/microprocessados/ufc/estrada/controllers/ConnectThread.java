@@ -8,9 +8,6 @@ import android.os.Handler;
 import java.io.IOException;
 import java.util.UUID;
 
-/**
- * Created by Simao on 09/12/2017.
- */
 public class ConnectThread extends Thread {
     private final BluetoothSocket mmSocket;
     private final BluetoothDevice mmDevice;
@@ -18,11 +15,8 @@ public class ConnectThread extends Thread {
     private BluetoothAdapter mBluetoothAdapter;
     private ConnectedThread mConnectedThread;
     private Handler connectionHandler;
-    private String control_char;
 
-
-    public ConnectThread(BluetoothDevice device,BluetoothAdapter mBluetoothAdapter, Handler connectionHandler,String control_char) {
-        this.control_char = control_char;
+    public ConnectThread(BluetoothDevice device,BluetoothAdapter mBluetoothAdapter, Handler connectionHandler) {
         BluetoothSocket tmp = null;
         mmDevice = device;
         try {
@@ -37,7 +31,7 @@ public class ConnectThread extends Thread {
         mBluetoothAdapter.cancelDiscovery();
         try {
             mmSocket.connect();
-            mConnectedThread = new ConnectedThread(mmSocket,connectionHandler,control_char);
+            mConnectedThread = new ConnectedThread(mmSocket,connectionHandler);
             mConnectedThread.start();
 //            connectionListener.connectionSucess();
             connectionHandler.sendEmptyMessage(1);
@@ -56,6 +50,7 @@ public class ConnectThread extends Thread {
     public void cancel() {
         try {
             mmSocket.close();
+            connectionHandler.sendEmptyMessage(3);
         } catch (IOException e) { }
     }
 

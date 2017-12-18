@@ -9,21 +9,15 @@ import java.util.ArrayList;
 import java.util.Set;
 
 
-/**
- * Created by Icriarli on 08/12/2017.
- */
 
 public class BluetoothController {
 
     private ConnectThread mConnectThread;
     private BluetoothDevice mDevice;
     private BluetoothAdapter mBluetoothAdapter;
-    private ConnectedThread mConnectedThread;
     private Handler connectHandler;
-    private String control_char;
 
-    public BluetoothController(Handler connectHandler,String control_char) throws NoBluetoothFoundException, BluetoothDisabledException {
-        this.control_char = control_char;
+    public BluetoothController(Handler connectHandler) throws NoBluetoothFoundException, BluetoothDisabledException {
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if(mBluetoothAdapter == null)
             throw new NoBluetoothFoundException();
@@ -44,7 +38,7 @@ public class BluetoothController {
     }
 
     public void connect(BluetoothDevice mdevice){
-        mConnectThread = new ConnectThread(mDevice,mBluetoothAdapter,connectHandler,control_char);
+        mConnectThread = new ConnectThread(mDevice,mBluetoothAdapter,connectHandler);
         mConnectThread.start();
     }
 
@@ -56,10 +50,6 @@ public class BluetoothController {
             list.add(bluetoothDevice.getName());
         Log.d("DEVICE","Paired Devices:" + pairedDevices.size());
         return new ArrayList<>(pairedDevices);
-    }
-
-    public void closeSocket() {
-        mConnectedThread.cancel();
     }
 
     public class NoBluetoothFoundException extends Throwable {
@@ -87,4 +77,9 @@ public class BluetoothController {
         else
             return null;
     }
+
+    public void disconnect(){
+        mConnectThread.cancel();
+    }
+
 }
