@@ -13,7 +13,7 @@ Obs: Para alimentar o modulo HC-05 (bluetooth) se pode conectar na porta 5V da b
 para ter essa tensão completa. 
 
 Instruçoes para o Aplicativo Android:
-  1 - Acesse a pasta Android\app\build\outputs\apk\debug .
+  1 - Acesse a pasta SW\Android\Apk .
   2 - Baixe o arquivo .apk.
   3 - Instale ele no seu celular android e estará pronto para usar. 
 
