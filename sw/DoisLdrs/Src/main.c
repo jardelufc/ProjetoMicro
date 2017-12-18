@@ -59,15 +59,11 @@ char str[4];
 uint8_t espaco[] = " ";
 uint8_t e[] = "&";
 uint8_t hashtag[] = "#";
-uint8_t arroba[] = "!";
-uint8_t porcento[] = "%";
 uint8_t cifrao[] = "$";
 uint8_t poste1[] = "Poste 1 queimado\n\r";
 uint8_t poste2[] = "Poste 2 queimado\n\r";
 uint8_t poste3[] = "Poste 3 queimado\n\r";
 uint8_t poste4[] = "Poste 4 queimado\n\r";
-uint8_t posteNormal[] = "Postes Funcionando";
-uint8_t rodoviaNormal[] = "Transito Normal";
 uint8_t rodovia[] = "Engarrafado";
 
 /* USER CODE END PV */
@@ -88,7 +84,7 @@ void SystemClock_Config(void);
 
 
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc){
-
+	//ler os valores dos ADCS
 	uint32_t val[7];
 	if (hadc->Instance  == ADC1){
 		/*Valores dos LDRS*/
@@ -103,7 +99,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc){
 
 
 		/*Codigo dos LDRS*/
-
+		//Checa o funcionamento de cada led
 
 		if (val[0] > 3100){
 			HAL_UART_Transmit(&huart1, (uint8_t*)cifrao, sizeof(cifrao), 10);
@@ -124,26 +120,19 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc){
 			   HAL_UART_Transmit(&huart1, (uint8_t*)poste4, 20,1000);
 			   HAL_UART_Transmit(&huart1, (uint8_t*)hashtag, sizeof(hashtag), 10);
 		}
-		/*if (val[0] < 3000 && val[1] < 3000 && val[2] < 3000 && val[3] < 3000 ){
-			HAL_UART_Transmit(&huart1, (uint8_t*)cifrao, sizeof(cifrao), 10);
-			HAL_UART_Transmit(&huart1, (uint8_t*)posteNormal, sizeof(posteNormal),1000);
-			HAL_UART_Transmit(&huart1, (uint8_t*)hashtag, sizeof(hashtag), 10);
-
-
-		} */
-
 
 
 
 		/*Codigo dos sensores*/
 
-		//Se os carros estiverem parados os sensores vao estar acionando sem parar
+		//Se os carros estiverem parados rodovia esta engarrafada
 		if (val[4] > 3730 && val[5] > 3730 && val[6] > 3730){
 
 			HAL_UART_Transmit(&huart1, (uint8_t*)e, sizeof(e), 10);
 			HAL_UART_Transmit(&huart1,(uint8_t*)rodovia , sizeof(rodovia),10);
 			HAL_UART_Transmit(&huart1, (uint8_t*)hashtag, sizeof(hashtag), 10);
 		}
+		//Se a rodovia nao estiver engarrafada a contagem ocorre
 		else if (val[6] > 3730){
 
 			contador = contador + 1;
@@ -154,9 +143,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc){
 
 }
 
-
-
-		}
+}
 
 
 
