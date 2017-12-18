@@ -59,6 +59,17 @@ char str[4];
 uint8_t espaco[] = " ";
 uint8_t e[] = "&";
 uint8_t hashtag[] = "#";
+uint8_t arroba[] = "!";
+uint8_t porcento[] = "%";
+uint8_t cifrao[] = "$";
+uint8_t poste1[] = "Poste 1 queimado\n\r";
+uint8_t poste2[] = "Poste 2 queimado\n\r";
+uint8_t poste3[] = "Poste 3 queimado\n\r";
+uint8_t poste4[] = "Poste 4 queimado\n\r";
+uint8_t posteNormal[] = "Postes Funcionando";
+uint8_t rodoviaNormal[] = "Transito Normal";
+uint8_t rodovia[] = "Engarrafado";
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -74,6 +85,8 @@ void SystemClock_Config(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
+
+
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc){
 
 	uint32_t val[7];
@@ -92,38 +105,66 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc){
 		/*Codigo dos LDRS*/
 
 
-		if (val[0] > 3000){
-			HAL_UART_Transmit(&huart1, "Poste 1 queimado\n\r", 20,1000);}
+		if (val[0] > 3100){
+			HAL_UART_Transmit(&huart1, (uint8_t*)cifrao, sizeof(cifrao), 10);
+			HAL_UART_Transmit(&huart1, (uint8_t*)poste1, 20,1000);
+			HAL_UART_Transmit(&huart1, (uint8_t*)hashtag, sizeof(hashtag), 10);
+		}
 		if (val[1] > 3000){
-					HAL_UART_Transmit(&huart1, "Poste 2 queimado\n\r", 20,1000);}
-		if (val[2] > 3000){
-					HAL_UART_Transmit(&huart1, "Poste 3 queimado\n\r", 20,1000);}
+			HAL_UART_Transmit(&huart1, (uint8_t*)cifrao, sizeof(cifrao), 10);
+			HAL_UART_Transmit(&huart1, (uint8_t*)poste2, 20,1000);
+			HAL_UART_Transmit(&huart1, (uint8_t*)hashtag, sizeof(hashtag), 10);}
+		if (val[2] > 2800){
+			HAL_UART_Transmit(&huart1, (uint8_t*)cifrao, sizeof(cifrao), 10);
+			HAL_UART_Transmit(&huart1, (uint8_t*)poste3, 20,1000);
+			HAL_UART_Transmit(&huart1, (uint8_t*)hashtag, sizeof(hashtag), 10);}
 
 		if (val[3] > 3000){
-					HAL_UART_Transmit(&huart1, "Poste 4 queimado\n\r", 20,1000);}
+			   HAL_UART_Transmit(&huart1, (uint8_t*)cifrao, sizeof(cifrao), 10);
+			   HAL_UART_Transmit(&huart1, (uint8_t*)poste4, 20,1000);
+			   HAL_UART_Transmit(&huart1, (uint8_t*)hashtag, sizeof(hashtag), 10);
+		}
+		/*if (val[0] < 3000 && val[1] < 3000 && val[2] < 3000 && val[3] < 3000 ){
+			HAL_UART_Transmit(&huart1, (uint8_t*)cifrao, sizeof(cifrao), 10);
+			HAL_UART_Transmit(&huart1, (uint8_t*)posteNormal, sizeof(posteNormal),1000);
+			HAL_UART_Transmit(&huart1, (uint8_t*)hashtag, sizeof(hashtag), 10);
+
+
+		} */
+
+
+
 
 		/*Codigo dos sensores*/
 
 		//Se os carros estiverem parados os sensores vao estar acionando sem parar
-		if (val[4] > 3500 && val[5] > 3500){
+		if (val[4] > 3730 && val[5] > 3730 && val[6] > 3730){
 
-			HAL_UART_Transmit(&huart1, "Rodovia congestionada \n\r", 25,1000);}
-		//Se nao estiver em engarrafamento, pode-se ocorrer uma contagem normal
-		else
-			if (val[6] > 3300 ){
+			HAL_UART_Transmit(&huart1, (uint8_t*)e, sizeof(e), 10);
+			HAL_UART_Transmit(&huart1,(uint8_t*)rodovia , sizeof(rodovia),10);
+			HAL_UART_Transmit(&huart1, (uint8_t*)hashtag, sizeof(hashtag), 10);
+		}
+		else if (val[6] > 3730){
 
 			contador = contador + 1;
 			sprintf(str,"%d", contador);
-			HAL_UART_Transmit(&huart1, (uint8_t*)e, sizeof(e), 100);
-			HAL_UART_Transmit(&huart1, str ,4,100);
-			HAL_UART_Transmit(&huart1, (uint8_t*)espaco, sizeof(espaco), 100);
-			HAL_UART_Transmit(&huart1, (uint8_t*)hashtag, sizeof(hashtag), 100);
-			//HAL_UART_Transmit(&huart1,  "\n", 2,1000);
-		}}
+			HAL_UART_Transmit(&huart1, (uint8_t*)e, sizeof(e), 10);
+			HAL_UART_Transmit(&huart1, str ,4,10);
+			HAL_UART_Transmit(&huart1, (uint8_t*)hashtag, sizeof(hashtag), 10);
+
+}
+
+
 
 		}
 
-		/*Codigo dos Sensores*/
+
+
+}
+
+
+
+
 
 
 
@@ -176,7 +217,6 @@ HAL_ADC_Start_IT(&hadc1);
 	  HAL_Delay(100);
 
 
-	  HAL_Delay(100);
   }
   /* USER CODE END 3 */
 
