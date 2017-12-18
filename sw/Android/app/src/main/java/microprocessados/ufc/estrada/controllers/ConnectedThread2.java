@@ -49,7 +49,13 @@ public class ConnectedThread2 extends Thread {
                     Log.d("BLUETOOTH","Lendo...");
                     is_reading = true;
                     buffer = new byte[1024];
+                    begin = i + 1;
+                    if (i == bytes - 1) {
+                        bytes = 0;
+                        begin = 0;
+                    }
                 }
+
                 }
                 if(is_reading == false)
                     buffer = new byte[1024];
@@ -62,7 +68,7 @@ public class ConnectedThread2 extends Thread {
                             message.obj = buffer2;
                             message.what = 2;
                             receiveHandler.sendMessage(message);
-                            is_reading = false;
+//                            is_reading = false;
 //                        receiveHandler.obtainMessage(1, begin, i, buffer).sendToTarget();
                             begin = i + 1;
                             if (i == bytes - 1) {

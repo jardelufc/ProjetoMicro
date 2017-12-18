@@ -19,7 +19,7 @@ public class ConnectedThread3 extends Thread {
 
     private static final String CONTROL_CHAR = "#";
 
-    private static final String INIT_CONTROL_CHAR = "#";
+    private static final String INIT_CONTROL_CHAR = "!";
 
     public ConnectedThread3(BluetoothSocket socket, Handler receiveHandler) {
         mmSocket = socket;
@@ -35,7 +35,7 @@ public class ConnectedThread3 extends Thread {
     }
     public void run() {
         Log.d("BLUETOOTH","Rodando...");
-        byte[] buffer = new byte[1024];
+        byte[] buffer = new byte[2048];
         int begin = 0;
         int bytes = 0;
         boolean is_reading = false;
@@ -49,7 +49,13 @@ public class ConnectedThread3 extends Thread {
                     Log.d("BLUETOOTH","Lendo...");
                     is_reading = true;
                     buffer = new byte[1024];
+                    begin = i + 1;
+                    if (i == bytes - 1) {
+                        bytes = 0;
+                        begin = 0;
+                    }
                 }
+
                 }
                 if(is_reading == false)
                     buffer = new byte[1024];
@@ -62,7 +68,7 @@ public class ConnectedThread3 extends Thread {
                             message.obj = buffer3;
                             message.what = 3;
                             receiveHandler.sendMessage(message);
-                            is_reading = false;
+//                            is_reading = false;
 //                        receiveHandler.obtainMessage(1, begin, i, buffer).sendToTarget();
                             begin = i + 1;
                             if (i == bytes - 1) {
